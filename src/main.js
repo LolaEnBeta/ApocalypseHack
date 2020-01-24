@@ -24,3 +24,6 @@ function main() {
 
   createSplashScreen()
 }
+
+
+window.addEventListener("load", main);
