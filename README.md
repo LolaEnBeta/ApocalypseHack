@@ -139,7 +139,7 @@ isInsideScreen() {}
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](https://github.com/LolaEnBeta/ApocalyspeHack)
+[Link Repo](https://github.com/LolaEnBeta/ApocalypseHack)
 [Link Deploy]
 
 
