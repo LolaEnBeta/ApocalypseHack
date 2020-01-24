@@ -47,6 +47,8 @@ function main() {
     `);
 
     document.body.appendChild(gameScreen);
+
+    return gameScreen;
   }
 
   function removeGameScreen() {
@@ -57,6 +59,8 @@ function main() {
     removeSplashScreen();
 
     game = new Game();
+
+    game.gameScreen = createGameScreen();
   }
 
   createSplashScreen()
