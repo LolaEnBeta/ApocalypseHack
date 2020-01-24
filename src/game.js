@@ -23,6 +23,8 @@ Game.prototype.start = function() {
   this.canvas.setAttribute("height", this.containerHeight);
 
   this.player = {};
+
+  this.startLoop();
 }
 
 Game.prototype.startLoop = function() {
