@@ -24,3 +24,7 @@ Game.prototype.start = function() {
 
   this.player = {};
 }
+
+Game.prototype.startLoop = function() {
+  var loop = function() {};
+}
