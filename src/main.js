@@ -27,6 +27,10 @@ function main() {
     });
   }
 
+  function removeSplashScreen() {
+    splashScreen.remove();
+  }
+
   createSplashScreen()
 }
 
