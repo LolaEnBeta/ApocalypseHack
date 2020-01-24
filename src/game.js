@@ -13,7 +13,7 @@ function Game() {
 Game.prototype.start = function() {
   this.canvasContainer = document.querySelector("canvas-container");
   this.canvas = this.gameScreen.querySelector("canvas");
-  this.ctx = this.canvas.getContent("2d");
+  this.ctx = this.canvas.getContext("2d");
 
   this.score = this.gameScreen.querySelector(".score .value");
 
