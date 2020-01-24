@@ -46,6 +46,9 @@ function main() {
         </div>
       </main>
     `);
+
+    document.body.appendChild(game);
+
   }
 
   createSplashScreen()
