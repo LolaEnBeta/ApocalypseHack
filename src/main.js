@@ -5,3 +5,9 @@ function buildDom(htmlStr) {
   div.innerHTML = htmlStr;
   return div.children[0];
 }
+
+function main() {
+  var game;
+  var splashScreen;
+  var gameOverScreen;
+}
