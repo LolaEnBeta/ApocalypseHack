@@ -49,7 +49,10 @@ function main() {
     `);
 
     document.body.appendChild(gameScreen);
+  }
 
+  function removeGameScreen() {
+    gameScreen.remove();
   }
 
   createSplashScreen()
