@@ -61,6 +61,8 @@ function main() {
     game = new Game();
 
     game.gameScreen = createGameScreen();
+
+    game.start();
   }
 
   createSplashScreen()
