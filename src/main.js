@@ -14,7 +14,7 @@ function main() {
   function createSplashScreen() {
     splashScreen = buildDom(
       `<main>
-        <h1>APOCALYSPE-HACK</h1>
+        <h1>APOCALYPSE-HACK</h1>
         <button>START</button>
       </main>`
     );
@@ -29,6 +29,23 @@ function main() {
 
   function removeSplashScreen() {
     splashScreen.remove();
+  }
+
+  function createGameScreen() {
+    var game = buildDom(`
+      <main class="game container">
+        <header>
+          <h1>APOCALYPSE-HACK</h1>
+        </header>
+        <div class="score">
+          <span class="points">Points:</span>
+          <span class="value"></span>
+        <div>
+        <div class="canvas-container">
+          <canvas></canvas>
+        </div>
+      </main>
+    `);
   }
 
   createSplashScreen()
