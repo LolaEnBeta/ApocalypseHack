@@ -18,6 +18,8 @@ function main() {
         <button>START</button>
       </main>`
     );
+
+    document.body.appendChild("splashScreen");
   }
 
 }
