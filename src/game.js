@@ -9,3 +9,5 @@ function Game() {
   this.gameIsOver = false;
   this.points = 0;
 }
+
+Game.prototype.start = function() {}
