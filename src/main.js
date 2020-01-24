@@ -22,4 +22,5 @@ function main() {
     document.body.appendChild(splashScreen);
   }
 
+  createSplashScreen()
 }
