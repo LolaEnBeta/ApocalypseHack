@@ -38,7 +38,7 @@ Game() {
   this.zombies;
   this.gameScreen;
   this.gameIsOver;
-  this.points;
+  this.score;
 }
 start() {}
 startLoop() {}
@@ -61,7 +61,7 @@ Player() {
 setDirection() {}
 handleScreenCollision() {}
 removeLife() {}
-updatePoints()
+updateScore()
 draw() {}
 ```
 

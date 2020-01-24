@@ -7,7 +7,7 @@ function Game() {
   this.zombies = [];
   this.gameScreen = null;
   this.gameIsOver = false;
-  this.points = 0;
+  this.score = 0;
 }
 
 Game.prototype.start = function() {
@@ -15,5 +15,5 @@ Game.prototype.start = function() {
   this.canvas = this.gameScreen.querySelector("canvas");
   this.ctx = this.canvas.getContent("2d");
 
-  this.points = this.gameScreen.querySelector(".score .value");
+  this.score = this.gameScreen.querySelector(".score .value");
 }

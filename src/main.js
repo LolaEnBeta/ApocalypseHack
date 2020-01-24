@@ -37,7 +37,7 @@ function main() {
           <h1>APOCALYPSE-HACK</h1>
         </header>
         <div class="score">
-          <span class="points">Points:</span>
+          <span class="points">Score:</span>
           <span class="value"></span>
         <div>
         <div class="canvas-container">
