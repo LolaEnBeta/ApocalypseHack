@@ -46,7 +46,6 @@ checkCollisions() {}
 updateGameStats() {}
 passGameOverCallback() {}
 gameOver() {}
-removeGameOverScreen() {}
 ```
 
 ### player.js
@@ -60,9 +59,9 @@ Player() {
   this.y;
 }
 setDirection() {}
-didCollide() {}
 handleScreenCollision() {}
 removeLife() {}
+updatePoints()
 draw() {}
 ```
 
