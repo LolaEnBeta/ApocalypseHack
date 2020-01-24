@@ -16,4 +16,9 @@ Game.prototype.start = function() {
   this.ctx = this.canvas.getContent("2d");
 
   this.score = this.gameScreen.querySelector(".score .value");
+
+  this.containerWidth = this.canvasContainer.offsetWidth;
+  this.containerHeight = this.canvasContainer.offsetHeight;
+  this.canvas.setAttribute("width", this.containerWidth);
+  this.canvas.setAttribute("height", this.containerHeight);
 }
