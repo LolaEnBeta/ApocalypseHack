@@ -10,4 +10,14 @@ function main() {
   var game;
   var splashScreen;
   var gameOverScreen;
+
+  function createSplashScreen() {
+    splashScreen = buildDom(
+      `<main>
+        <h1>APOCALYSPE-HACK</h1>
+        <button>START</button>
+      </main>`
+    );
+  }
+
 }
