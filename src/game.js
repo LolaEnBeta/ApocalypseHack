@@ -10,4 +10,8 @@ function Game() {
   this.points = 0;
 }
 
-Game.prototype.start = function() {}
+Game.prototype.start = function() {
+  this.canvasContainer = document.querySelector("canvas-container");
+  this.canvas = this.gameScreen.querySelector("canvas");
+  this.ctx = this.canvas.getContent("2d");
+}
