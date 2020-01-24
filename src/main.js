@@ -55,6 +55,11 @@ function main() {
     gameScreen.remove();
   }
 
+  function startGame() {
+    removeGameScreen();
+    createGameScreen();
+  }
+
   createSplashScreen()
 }
 
