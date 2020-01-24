@@ -9,6 +9,7 @@ function buildDom(htmlStr) {
 function main() {
   var game;
   var splashScreen;
+  var gameScreen;
   var gameOverScreen;
 
   function createSplashScreen() {
@@ -32,7 +33,7 @@ function main() {
   }
 
   function createGameScreen() {
-    var game = buildDom(`
+    gameScreen = buildDom(`
       <main class="game container">
         <header>
           <h1>APOCALYPSE-HACK</h1>
@@ -47,7 +48,7 @@ function main() {
       </main>
     `);
 
-    document.body.appendChild(game);
+    document.body.appendChild(gameScreen);
 
   }
 
