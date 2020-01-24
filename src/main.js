@@ -23,9 +23,7 @@ function main() {
     document.body.appendChild(splashScreen);
 
     var startButton = document.querySelector("button");
-    startButton.addEventListener("click", function() {
-      console.log("Start button was clicked!");
-    });
+    startButton.addEventListener("click", startGame);
   }
 
   function removeSplashScreen() {
@@ -56,7 +54,7 @@ function main() {
   }
 
   function startGame() {
-    removeGameScreen();
+    removeSplashScreen();
     createGameScreen();
   }
 
