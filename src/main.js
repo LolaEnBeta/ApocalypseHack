@@ -19,7 +19,7 @@ function main() {
       </main>`
     );
 
-    document.body.appendChild("splashScreen");
+    document.body.appendChild(splashScreen);
   }
 
 }
