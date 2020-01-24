@@ -21,4 +21,6 @@ Game.prototype.start = function() {
   this.containerHeight = this.canvasContainer.offsetHeight;
   this.canvas.setAttribute("width", this.containerWidth);
   this.canvas.setAttribute("height", this.containerHeight);
+
+  this.player = {};
 }
