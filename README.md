@@ -57,6 +57,7 @@ Player() {
   this.size;
   this.x;
   this.y;
+  this.direction;
 }
 setDirection() {}
 handleScreenCollision() {}
