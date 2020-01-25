@@ -41,5 +41,9 @@ Player.prototype.draw = function() {
 }
 
 Player.prototype.didCollide = function(zombie) {
+  var playerTop = this.y;
+  var playerBottom = this.y + this.size;
+  var playerLeft = this.x;
+  var playerRight = this.x + this.size;
 
 }
