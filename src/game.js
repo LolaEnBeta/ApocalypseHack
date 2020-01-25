@@ -63,6 +63,10 @@ Game.prototype.startLoop = function() {
     //3. UPDATE THE CANVAS
     this.player.draw();
 
+    this.zombies.forEach(function(zombie) {
+      zombie.draw();
+    })
+
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
       window.requestAnimationFrame(loop);
