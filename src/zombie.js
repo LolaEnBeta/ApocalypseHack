@@ -5,8 +5,8 @@ function Zombie(canvas, x) {
   this.ctx = this.canvas.getContext("2d");
   this.size = 40;
   this.x = x;
-  this.y = this.canvas.height - this.size;
-  this.speed = 5;
+  this.y = 0;
+  this.speed = 1;
 }
 
 Zombie.prototype.draw = function() {
@@ -20,7 +20,7 @@ Zombie.prototype.draw = function() {
 }
 
 Zombie.prototype.updatePosition = function() {
-  this.y = this.y - this.speed;
+  this.y = this.y + this.speed;
 }
 
 Zombie.prototype.isInsideScreen = function() {
