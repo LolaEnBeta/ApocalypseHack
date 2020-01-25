@@ -39,3 +39,7 @@ Player.prototype.draw = function() {
     this.size,
   );
 }
+
+Player.prototype.didCollide = function(zombie) {
+
+}
