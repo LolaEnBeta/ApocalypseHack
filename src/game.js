@@ -44,6 +44,12 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
+    if (Math.random() > 0.98) {
+      var randomX = this.canvas.width * Math.random();
+      var newZombie = new Zombie(this.canvas, randomX);
+      this.zombies.push(newZombie);
+    }
+
     this.player.handleScreenCollision();
 
     //2. CLEAR CANVAS
