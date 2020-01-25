@@ -27,9 +27,9 @@ Game.prototype.start = function() {
 
   this.handleKeyDown = function(event) {
     if (event.key === "ArrowLeft") {
-      console.log("LEFT");
+      this.player.setDirection("left");
     } else if (event.key === "ArrowRight") {
-      console.log("RIGHT");
+      this.player.setDirection("right");
     }
   }
 
