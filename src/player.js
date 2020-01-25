@@ -50,4 +50,14 @@ Player.prototype.didCollide = function(zombie) {
   var zombieBottom = zombie.y + zombie.size;
   var zombieLeft = zombie.x;
   var zombieRight = zombie.x + zombie.size;
+
+  var crossLeft = zombieLeft <= playerRight && zombieLeft >= playerLeft;
+  var crossRight = zombieRight >= playerLeft && zombieRight <= playerRight;
+  var crossBottom = zombieBottom >= playerTop && zombieBottom <= playerBottom;
+  var crossTop = zombieTop <= playerBottom && zombieTop >= playerTop;
+
+  if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
+    return true;
+  }
+  return false;
 }
