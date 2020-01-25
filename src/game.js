@@ -50,6 +50,8 @@ Game.prototype.startLoop = function() {
       this.zombies.push(newZombie);
     }
 
+    this.checkCollisions();
+
     this.player.handleScreenCollision();
 
     this.zombies = this.zombies.filter(function(zombie) {
