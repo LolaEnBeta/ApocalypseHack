@@ -16,3 +16,16 @@ Player.prototype.setDirection = function(direction) {
     this.direction = 1;
   }
 }
+
+Player.prototype.handleScreenCollision = function() {
+  this.x = this.x + this.direction * this.speed;
+
+  var screenLeft = 0;
+  var screenRight = this.canvas.width;
+
+  if (this.x < screenLeft) {
+    this.direction = 1;
+  } else if (this.x > screenRight) {
+    this.direction = -1;
+  }
+}
