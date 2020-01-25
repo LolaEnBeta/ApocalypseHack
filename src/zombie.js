@@ -18,3 +18,7 @@ Zombie.prototype.draw = function() {
     this.size,
   );
 }
+
+Zombie.prototype.updatePosition = function() {
+  this.y = this.y - this.speed;
+}
