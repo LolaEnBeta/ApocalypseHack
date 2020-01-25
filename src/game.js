@@ -21,7 +21,7 @@ Game.prototype.start = function() {
   this.ctx = this.canvas.getContext("2d");
 
   this.canvas.setAttribute("width", this.containerWidth);
-  this.canvas.setAttribute("height", this.containerHeight);
+  this.canvas.setAttribute("height", 500);
 
   this.player = new Player(this.canvas);
 
@@ -51,6 +51,11 @@ Game.prototype.startLoop = function() {
     }
 
     this.player.handleScreenCollision();
+
+    this.zombies = this.zombies.filter(function(zombie) {
+      zombie.updatePosition();
+      return zombie.isInsideScreen();
+    })
 
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
