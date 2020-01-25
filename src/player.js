@@ -5,8 +5,8 @@ function Player(canvas) {
   this.ctx = this.canvas.getContext("2d");
   this.size = 80;
   this.direction = 0;
-  this.x = 0;
-  this.y = 0;
+  this.x = (canvas.width / 2) - (this.size / 2);
+  this.y = canvas.height - this.size;
 }
 
 Player.prototype.setDirection = function(direction) {
@@ -21,7 +21,7 @@ Player.prototype.handleScreenCollision = function() {
   this.x = this.x + this.direction;
 
   var screenLeft = 0;
-  var screenRight = this.canvas.width;
+  var screenRight = this.canvas.width - this.size;
 
   if (this.x < screenLeft) {
     this.direction = 1;
