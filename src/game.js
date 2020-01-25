@@ -24,6 +24,19 @@ Game.prototype.start = function() {
 
   this.player = new Player(this.canvas);
 
+  this.handleKeyDown = function(event) {
+    if (event.key === "ArrowLeft") {
+      console.log("LEFT");
+    } else if (event.key === "ArrowRight") {
+      console.log("RIGHT");
+    }
+  }
+
+  document.body.addEventListener(
+    'keydown',
+    this.handleKeyDown.bind(this)
+  );
+
   this.startLoop();
 }
 
