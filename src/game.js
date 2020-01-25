@@ -43,6 +43,16 @@ Game.prototype.start = function() {
 
 Game.prototype.startLoop = function() {
   var loop = function() {
+    //1. UPDATE THE STATE OF PLAYER
+    this.player.handleScreenCollision();
+
+    //2. CLEAR CANVAS
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    //3. UPDATE THE CANVAS
+    this.player.draw();
+
+    //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
       window.requestAnimationFrame(loop);
     }
