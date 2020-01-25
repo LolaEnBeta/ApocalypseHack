@@ -3,10 +3,13 @@
 function Player(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
+
   this.size = 80;
   this.direction = 0;
   this.x = (this.canvas.width / 2) - (this.size / 2);
   this.y = this.canvas.height - this.size;
+
+  this.score = 0,
 }
 
 Player.prototype.setDirection = function(direction) {
