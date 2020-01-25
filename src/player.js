@@ -5,8 +5,8 @@ function Player(canvas) {
   this.ctx = this.canvas.getContext("2d");
   this.size = 80;
   this.direction = 0;
-  this.x = (canvas.width / 2) - (this.size / 2);
-  this.y = canvas.height - this.size;
+  this.x = (this.canvas.width / 2) - (this.size / 2);
+  this.y = this.canvas.height - this.size;
 }
 
 Player.prototype.setDirection = function(direction) {

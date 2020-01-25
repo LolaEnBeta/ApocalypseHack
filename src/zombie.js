@@ -1,5 +1,10 @@
 "use strict";
 
-function Zombie() {
-
+function Zombie(canvas, x) {
+  this.canvas = canvas;
+  this.ctx = this.canvas.getContext("2d");
+  this.size = 40;
+  this.x = x;
+  this.y = this.canvas.height - this.size;
+  this.speed = 5;
 }
