@@ -9,7 +9,7 @@ function Player(canvas) {
   this.x = (this.canvas.width / 2) - (this.size / 2);
   this.y = this.canvas.height - this.size;
 
-  this.score = 0,
+  this.score = 0;
 }
 
 Player.prototype.setDirection = function(direction) {
@@ -63,4 +63,8 @@ Player.prototype.didCollide = function(zombie) {
     return true;
   }
   return false;
+}
+
+Player.prototype.updateScore = function() {
+  this.score++;
 }
