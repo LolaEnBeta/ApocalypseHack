@@ -11,14 +11,15 @@ function Game() {
 }
 
 Game.prototype.start = function() {
+  this.score = this.gameScreen.querySelector(".score .value");
+
   this.canvasContainer = document.querySelector(".canvas-container");
+  this.containerWidth = this.canvasContainer.offsetWidth;
+  this.containerHeight = this.canvasContainer.offsetHeight;
+
   this.canvas = this.gameScreen.querySelector("canvas");
   this.ctx = this.canvas.getContext("2d");
 
-  this.score = this.gameScreen.querySelector(".score .value");
-
-  this.containerWidth = this.canvasContainer.offsetWidth;
-  this.containerHeight = this.canvasContainer.offsetHeight;
   this.canvas.setAttribute("width", this.containerWidth);
   this.canvas.setAttribute("height", this.containerHeight);
 
@@ -42,8 +43,6 @@ Game.prototype.start = function() {
 
 Game.prototype.startLoop = function() {
   var loop = function() {
-    console.log("in loop");
-
     if (!this.gameIsOver) {
       window.requestAnimationFrame(loop);
     }
