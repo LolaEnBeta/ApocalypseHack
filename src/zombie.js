@@ -8,3 +8,13 @@ function Zombie(canvas, x) {
   this.y = this.canvas.height - this.size;
   this.speed = 5;
 }
+
+Zombie.prototype.draw = function() {
+  this.ctx.fillStyle = "green";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
