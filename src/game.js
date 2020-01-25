@@ -22,7 +22,7 @@ Game.prototype.start = function() {
   this.canvas.setAttribute("width", this.containerWidth);
   this.canvas.setAttribute("height", this.containerHeight);
 
-  this.player = {};
+  this.player = new Player(this.canvas);
 
   this.startLoop();
 }
