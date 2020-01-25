@@ -29,3 +29,13 @@ Player.prototype.handleScreenCollision = function() {
     this.direction = -1;
   }
 }
+
+Player.prototype.draw = function() {
+  this.ctx.fillStyle = "red";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
