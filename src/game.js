@@ -48,4 +48,6 @@ Game.prototype.startLoop = function() {
       window.requestAnimationFrame(loop);
     }
   }.bind(this);
+
+  window.requestAnimationFrame(loop);
 }
