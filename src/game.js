@@ -81,7 +81,7 @@ Game.prototype.startLoop = function() {
 Game.prototype.checkCollisions = function() {
   this.zombies.forEach(function(zombie) {
     if (this.player.didCollide(zombie)) {
-      console.log("Collision!");
+      this.player.updateScore();
     }
   }, this);
 }
