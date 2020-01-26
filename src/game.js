@@ -87,6 +87,11 @@ Game.prototype.startLoop = function(gameOverCallback) {
       return repairKit.isInsideScreen();
     });
 
+    this.obstacles = this.obstacles.filter(function(obstacle) {
+      obstacle.updatePosition();
+      return obstacle.isInsideScreen();
+    });
+
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -99,6 +104,10 @@ Game.prototype.startLoop = function(gameOverCallback) {
 
     this.repairKits.forEach(function(repairKit) {
       repairKit.draw();
+    });
+
+    this.obstacles.forEach(function(obstacle) {
+      obstacle.draw();
     });
 
     //4. TERMINATE LOOP IF GAME IS OVER
@@ -127,10 +136,18 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     }
   }, this);
 
-  if (this.player.damage === 100) {
+  this.obstacles.forEach(function(obstacle) {
+    if (this.player.didCollide(obstacle)) {
+      obstacle.y = this.canvas.height + obstacle.size;
+      this.player.receiveDamage(obstacle.damage);
+    }
+  }, this);
+
+  if (this.player.damage >= 100 || this.player.lifes === 0) {
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
     clearInterval(this.setIntervalRepairKitsId);
+    clearInterval(this.setIntervalObstaclesId);
     gameOverCallback();
   }
 }
