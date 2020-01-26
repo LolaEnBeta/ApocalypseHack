@@ -42,16 +42,17 @@ Game.prototype.start = function() {
 }
 
 Game.prototype.startLoop = function() {
-  var loop = function() {
-    //1. UPDATE THE STATE OF PLAYER
+  setInterval(() => {
     var zombiesPositions = [280, 420, 560, 700];
 
-    if (Math.random() > 0.98) {
-      var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
-      var newZombie = new Zombie(this.canvas, randomX);
-      this.zombies.push(newZombie);
-    }
+    var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
+    var newZombie = new Zombie(this.canvas, randomX);
+    this.zombies.push(newZombie);
 
+  }, 1500);
+
+  var loop = function() {
+    //1. UPDATE THE STATE OF PLAYER
     this.checkCollisions();
 
     this.player.handleScreenCollision();
