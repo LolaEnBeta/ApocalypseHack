@@ -70,7 +70,12 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.zombies = this.zombies.filter(function(zombie) {
       zombie.updatePosition();
       return zombie.isInsideScreen();
-    })
+    });
+
+    this.repairKits = this.repairKits.filter(function(repairKit) {
+      repairKit.updatePosition();
+      return repairKit.isInsideScreen();
+    });
 
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -80,7 +85,11 @@ Game.prototype.startLoop = function(gameOverCallback) {
 
     this.zombies.forEach(function(zombie) {
       zombie.draw();
-    })
+    });
+
+    this.repairKits.forEach(function(repairKit) {
+      repairKit.draw();
+    });
 
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
