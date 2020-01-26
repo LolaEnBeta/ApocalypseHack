@@ -14,14 +14,14 @@ Game.prototype.start = function() {
   this.score = this.gameScreen.querySelector(".score .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
-  this.containerWidth = this.canvasContainer.offsetWidth;
-  this.containerHeight = this.canvasContainer.offsetHeight;
+  // this.containerWidth = this.canvasContainer.offsetWidth;
+  // this.containerHeight = this.canvasContainer.offsetHeight;
 
   this.canvas = this.gameScreen.querySelector("canvas");
   this.ctx = this.canvas.getContext("2d");
 
-  this.canvas.setAttribute("width", this.containerWidth);
-  this.canvas.setAttribute("height", 500);
+  this.canvas.setAttribute("width", 500);
+  this.canvas.setAttribute("height", 600);
 
   this.player = new Player(this.canvas);
 
