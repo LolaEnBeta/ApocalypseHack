@@ -92,5 +92,10 @@ Game.prototype.checkCollisions = function() {
 
   if (this.player.damage === 100) {
     this.gameIsOver = true;
+    this.startOver();
   }
+}
+
+Game.prototype.passGameOverCallback = function(gameOverFunc) {
+  this.startOver = gameOverFunc;
 }

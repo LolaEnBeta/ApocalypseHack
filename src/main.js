@@ -56,7 +56,7 @@ function main() {
   }
 
   function createGameOverScreen() {
-    gameOverScreen.buildDom(`
+    gameOverScreen = buildDom(`
       <main>
         <h1>Game over</h1>
         <p>Your score: <span></span></p>
@@ -75,10 +75,13 @@ function main() {
     game.gameScreen = createGameScreen();
 
     game.start();
+
+    game.passGameOverCallback(gameOver);
   }
 
   function gameOver() {
     removeGameScreen();
+    createGameOverScreen();
   }
 
   createSplashScreen()
