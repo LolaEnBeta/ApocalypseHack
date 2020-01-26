@@ -21,3 +21,7 @@ Obstacle.prototype.draw = function() {
     this.size,
   );
 }
+
+Obstacle.prototype.updatePosition = function() {
+  this.y = this.y + this.speed;
+}
