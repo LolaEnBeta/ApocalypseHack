@@ -11,3 +11,13 @@ function Obstacle(canvas, x) {
   this.speed = 1;
   this.removeLife = 1;
 }
+
+Obstacle.prototype.draw = function() {
+  this.ctx.fillStyle = "black";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
