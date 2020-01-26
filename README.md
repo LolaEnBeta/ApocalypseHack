@@ -54,6 +54,7 @@ Player() {
   this.ctx;
   this.lifes;
   this.score;
+  this.damage;
   this.size;
   this.x;
   this.y;

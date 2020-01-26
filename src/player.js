@@ -9,6 +9,7 @@ function Player(canvas) {
   this.y = this.canvas.height - this.size;
 
   this.score = 0;
+  this.damage = 0;
 }
 
 Player.prototype.move = function(direction) {
@@ -64,4 +65,8 @@ Player.prototype.didCollide = function(zombie) {
 
 Player.prototype.updateScore = function() {
   this.score++;
+}
+
+Player.prototype.receiveDamage = function() {
+  this.damage += 10;
 }
