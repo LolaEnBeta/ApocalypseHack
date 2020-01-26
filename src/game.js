@@ -109,6 +109,14 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     }
   }, this);
 
+  this.repairKits.forEach(function(repairKit) {
+    if (this.player.didCollide(repairKit)) {
+      repairKit.y = this.canvas.height + repairKit.size;
+      this.player.updateScore();
+      this.player.repairDamage(repairKit.repair);
+    }
+  }, this);
+
   if (this.player.damage === 100) {
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);

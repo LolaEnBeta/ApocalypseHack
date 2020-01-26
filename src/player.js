@@ -70,3 +70,7 @@ Player.prototype.updateScore = function() {
 Player.prototype.receiveDamage = function(recivedDamage) {
   this.damage += recivedDamage;
 }
+
+Player.prototype.repairDamage = function(removeDamage) {
+  this.damage -= removeDamage;
+}
