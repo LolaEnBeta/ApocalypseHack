@@ -72,5 +72,7 @@ Player.prototype.receiveDamage = function(recivedDamage) {
 }
 
 Player.prototype.repairDamage = function(removeDamage) {
-  this.damage -= removeDamage;
+  if (this.damage >= 10) {
+    this.damage -= removeDamage;
+  }
 }

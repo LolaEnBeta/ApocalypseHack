@@ -131,7 +131,6 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
   this.repairKits.forEach(function(repairKit) {
     if (this.player.didCollide(repairKit)) {
       repairKit.y = this.canvas.height + repairKit.size;
-      this.player.updateScore();
       this.player.repairDamage(repairKit.repair);
     }
   }, this);
