@@ -42,7 +42,7 @@ Game.prototype.start = function(gameOverCallback) {
 }
 
 Game.prototype.startLoop = function(gameOverCallback) {
-  setInterval(() => {
+  this.setIntervalId = setInterval(() => {
     var zombiesPositions = [280, 420, 560, 700];
 
     var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
@@ -92,6 +92,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
 
   if (this.player.damage === 100) {
     this.gameIsOver = true;
+    clearInterval(this.setIntervalId);
     gameOverCallback();
   }
 }
