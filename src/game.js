@@ -20,7 +20,7 @@ Game.prototype.start = function() {
   this.canvas = this.gameScreen.querySelector("canvas");
   this.ctx = this.canvas.getContext("2d");
 
-  this.canvas.setAttribute("width", 500);
+  this.canvas.setAttribute("width", 840);
   this.canvas.setAttribute("height", 600);
 
   this.player = new Player(this.canvas);
@@ -44,8 +44,10 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
+    var zombiesPositions = [280, 420, 560, 700];
+
     if (Math.random() > 0.98) {
-      var randomX = this.canvas.width * Math.random();
+      var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
       var newZombie = new Zombie(this.canvas, randomX);
       this.zombies.push(newZombie);
     }
