@@ -14,9 +14,9 @@ function Player(canvas) {
 
 Player.prototype.setDirection = function(direction) {
   if (direction === "left") {
-    this.direction = -1;
+    this.x += -50;
   } else if (direction === "right") {
-    this.direction = 1;
+    this.x += 50;
   }
 }
 
