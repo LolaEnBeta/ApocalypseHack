@@ -11,3 +11,13 @@ function RepairKit(canvas, x) {
   this.speed = 1;
   this.repair = 10;
 }
+
+RepairKit.prototype.draw = function() {
+  this.ctx.fillStyle = "orange";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
