@@ -10,7 +10,7 @@ function Game() {
   this.score = 0;
 }
 
-Game.prototype.start = function() {
+Game.prototype.start = function(gameOverCallback) {
   this.score = this.gameScreen.querySelector(".score .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
@@ -38,10 +38,10 @@ Game.prototype.start = function() {
     this.handleKeyDown.bind(this)
   );
 
-  this.startLoop();
+  this.startLoop(gameOverCallback);
 }
 
-Game.prototype.startLoop = function() {
+Game.prototype.startLoop = function(gameOverCallback) {
   setInterval(() => {
     var zombiesPositions = [280, 420, 560, 700];
 
@@ -53,7 +53,7 @@ Game.prototype.startLoop = function() {
 
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
-    this.checkCollisions();
+    this.checkCollisions(gameOverCallback);
 
     this.player.handleScreenCollision();
 
@@ -81,7 +81,7 @@ Game.prototype.startLoop = function() {
   window.requestAnimationFrame(loop);
 }
 
-Game.prototype.checkCollisions = function() {
+Game.prototype.checkCollisions = function(gameOverCallback) {
   this.zombies.forEach(function(zombie) {
     if (this.player.didCollide(zombie)) {
       zombie.y = this.canvas.height + zombie.size;
@@ -92,10 +92,6 @@ Game.prototype.checkCollisions = function() {
 
   if (this.player.damage === 100) {
     this.gameIsOver = true;
-    this.startOver();
+    gameOverCallback();
   }
-}
-
-Game.prototype.passGameOverCallback = function(gameOverFunc) {
-  this.startOver = gameOverFunc;
 }

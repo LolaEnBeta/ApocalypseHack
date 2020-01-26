@@ -74,9 +74,8 @@ function main() {
 
     game.gameScreen = createGameScreen();
 
-    game.start();
+    game.start(() => gameOver());
 
-    game.passGameOverCallback(gameOver);
   }
 
   function gameOver() {
