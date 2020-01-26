@@ -6,7 +6,7 @@ function Player(canvas) {
 
   this.size = 80;
   this.direction = 0;
-  this.x = (this.canvas.width / 2) - (this.size / 2);
+  this.x = 280 - (this.size / 2);
   this.y = this.canvas.height - this.size;
 
   this.score = 0;
@@ -14,9 +14,9 @@ function Player(canvas) {
 
 Player.prototype.setDirection = function(direction) {
   if (direction === "left") {
-    this.x += -50;
+    this.x += -140;
   } else if (direction === "right") {
-    this.x += 50;
+    this.x += 140;
   }
 }
 
