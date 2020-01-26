@@ -21,3 +21,7 @@ RepairKit.prototype.draw = function() {
     this.size,
   );
 }
+
+RepairKit.prototype.updatePosition = function() {
+  this.y = this.y + this.speed;
+}
