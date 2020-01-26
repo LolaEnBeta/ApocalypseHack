@@ -103,6 +103,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
   if (this.player.damage === 100) {
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
+    clearInterval(this.setIntervalRepairKitsId);
     gameOverCallback();
   }
 }
