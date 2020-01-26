@@ -55,6 +55,18 @@ function main() {
     gameScreen.remove();
   }
 
+  function createGameOverScreen() {
+    gameOverScreen.buildDom(`
+      <main>
+        <h1>Game over</h1>
+        <p>Your score: <span></span></p>
+        <button>Restart</button>
+      </main>
+    `);
+
+    document.body.appendChild(gameOverScreen);
+  }
+
   function startGame() {
     removeSplashScreen();
 
