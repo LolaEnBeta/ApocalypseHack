@@ -5,6 +5,7 @@ function Game() {
   this.ctx = null;
   this.player = null;
   this.zombies = [];
+  this.repairKits = [];
   this.gameScreen = null;
   this.gameIsOver = false;
   this.score = 0;
@@ -42,14 +43,23 @@ Game.prototype.start = function(gameOverCallback) {
 }
 
 Game.prototype.startLoop = function(gameOverCallback) {
-  this.setIntervalId = setInterval(() => {
+  this.setIntervalZombiesId = setInterval(() => {
     var zombiesPositions = [280, 420, 560, 700];
 
     var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
     var newZombie = new Zombie(this.canvas, randomX);
-    this.zombies.push(newZombie);
 
+    this.zombies.push(newZombie);
   }, 1500);
+
+  this.setIntervalRepairKitsId = setInterval(() => {
+    var repairKitsPositions = [280, 420, 560, 700];
+
+    var randomRepairKitX = repairKitsPositions[Math.floor(Math.random() * 5)];
+    var newRepairKit = new RepairKit(this.canvas, randomRepairKitX);
+
+    this.repairKits.push(newRepairKit);
+  }, 2500);
 
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
@@ -92,7 +102,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
 
   if (this.player.damage === 100) {
     this.gameIsOver = true;
-    clearInterval(this.setIntervalId);
+    clearInterval(this.setIntervalZombiesId);
     gameOverCallback();
   }
 }
