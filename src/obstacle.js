@@ -25,3 +25,7 @@ Obstacle.prototype.draw = function() {
 Obstacle.prototype.updatePosition = function() {
   this.y = this.y + this.speed;
 }
+
+Obstacle.prototype.isInsideScreen = function() {
+  return this.y + this.size + this.speed;
+}
