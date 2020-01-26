@@ -86,6 +86,11 @@ Game.prototype.checkCollisions = function() {
     if (this.player.didCollide(zombie)) {
       zombie.y = this.canvas.height + zombie.size;
       this.player.updateScore();
+      this.player.receiveDamage();
     }
   }, this);
+
+  if (this.player.damage === 100) {
+    this.gameIsOver = true;
+  }
 }
