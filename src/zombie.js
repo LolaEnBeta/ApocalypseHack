@@ -24,5 +24,5 @@ Zombie.prototype.updatePosition = function() {
 }
 
 Zombie.prototype.isInsideScreen = function() {
-  return this.y + this.size - this.speed;
+  return this.y + this.size + this.speed;
 }

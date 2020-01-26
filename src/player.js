@@ -4,15 +4,14 @@ function Player(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
 
-  this.size = 80;
-  this.direction = 0;
+  this.size = 65;
   this.x = 280 - (this.size / 2);
   this.y = this.canvas.height - this.size;
 
   this.score = 0;
 }
 
-Player.prototype.setDirection = function(direction) {
+Player.prototype.move = function(direction) {
   if (direction === "left") {
     this.x += -140;
   } else if (direction === "right") {
@@ -21,15 +20,13 @@ Player.prototype.setDirection = function(direction) {
 }
 
 Player.prototype.handleScreenCollision = function() {
-  this.x = this.x + this.direction;
-
-  var screenLeft = 0;
-  var screenRight = this.canvas.width - this.size;
+  var screenLeft = 280;
+  var screenRight = 700;
 
   if (this.x < screenLeft) {
-    this.x = 0;
+    this.x = 280;
   } else if (this.x > screenRight) {
-    this.x = this.canvas.width - this.size;
+    this.x = 700;
   }
 }
 
