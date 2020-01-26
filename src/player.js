@@ -67,6 +67,6 @@ Player.prototype.updateScore = function() {
   this.score++;
 }
 
-Player.prototype.receiveDamage = function() {
-  this.damage += 10;
+Player.prototype.receiveDamage = function(recivedDamage) {
+  this.damage += recivedDamage;
 }
