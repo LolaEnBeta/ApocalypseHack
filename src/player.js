@@ -27,9 +27,9 @@ Player.prototype.handleScreenCollision = function() {
   var screenRight = this.canvas.width - this.size;
 
   if (this.x < screenLeft) {
-    this.direction = 1;
+    this.x = 0;
   } else if (this.x > screenRight) {
-    this.direction = -1;
+    this.x = this.canvas.width - this.size;
   }
 }
 
