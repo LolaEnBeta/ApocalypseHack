@@ -24,3 +24,7 @@ Bullet.prototype.draw = function() {
 Bullet.prototype.updatePosition = function() {
   this.y = this.y + this.speed;
 }
+
+Bullet.prototype.isInsideScreen = function() {
+  return this.y + this.size + this.speed;
+}
