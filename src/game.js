@@ -37,7 +37,9 @@ Game.prototype.start = function(gameOverCallback) {
     } else if (event.key === "ArrowRight") {
       this.player.move("right");
     } else if (event.key === " ") {
-      console.log("space")
+      if(this.player.hasGun === "Yes") {
+        this.player.shot();
+      }
     }
   }
 

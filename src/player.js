@@ -98,3 +98,9 @@ Player.prototype.gainLife = function(life) {
 Player.prototype.obtainGun = function() {
   this.hasGun = "Yes";
 }
+
+Player.prototype.shot = function() {
+  var bullet = new Bullet(this.canvas, this.x, this.y);
+  bullet.updatePosition();
+  bullet.draw();
+}
