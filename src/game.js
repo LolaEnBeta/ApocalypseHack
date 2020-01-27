@@ -7,6 +7,7 @@ function Game() {
   this.zombies = [];
   this.repairKits = [];
   this.obstacles = [];
+  this.persons = [];
   this.gameScreen = null;
   this.gameIsOver = false;
   this.scoreInfo = 0;
@@ -71,6 +72,15 @@ Game.prototype.startLoop = function(gameOverCallback) {
     var newObstacle = new Obstacle(this.canvas, randomObstacleX);
 
     this.obstacles.push(newObstacle);
+  }, 2500);
+
+  this.setIntervalPersonsId = setInterval(() => {
+    var personsPositions = [200, 320, 455, 580];
+
+    var randomPersonX = personsPositions[Math.floor(Math.random() * 5)];
+    var newPerson = new Obstacle(this.canvas, randomPersonX);
+
+    this.obstacles.push(newPerson);
   }, 2500);
 
   var loop = function() {
