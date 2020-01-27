@@ -21,3 +21,7 @@ Person.prototype.draw = function() {
     this.size,
   );
 }
+
+Person.prototype.updatePosition = function() {
+  this.y = this.y + this.speed;
+}
