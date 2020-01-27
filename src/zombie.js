@@ -14,7 +14,10 @@ function Zombie(canvas, x) {
 
 Zombie.prototype.draw = function() {
   this.ctx.fillStyle = "green";
-  this.ctx.fillRect(
+  var img = new Image();
+  img.src = "./images/zombie.png";
+  this.ctx.drawImage(
+    img,
     this.x,
     this.y,
     this.size,

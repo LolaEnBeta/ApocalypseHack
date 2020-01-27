@@ -14,7 +14,10 @@ function Obstacle(canvas, x) {
 
 Obstacle.prototype.draw = function() {
   this.ctx.fillStyle = "black";
-  this.ctx.fillRect(
+  var img = new Image();
+  img.src = "./images/barricade.png";
+  this.ctx.drawImage(
+    img,
     this.x,
     this.y,
     this.size,

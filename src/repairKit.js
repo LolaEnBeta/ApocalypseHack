@@ -14,7 +14,10 @@ function RepairKit(canvas, x) {
 
 RepairKit.prototype.draw = function() {
   this.ctx.fillStyle = "orange";
-  this.ctx.fillRect(
+  var img = new Image();
+  img.src = "./images/repairKit.png";
+  this.ctx.drawImage(
+    img,
     this.x,
     this.y,
     this.size,

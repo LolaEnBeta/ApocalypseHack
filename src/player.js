@@ -33,7 +33,10 @@ Player.prototype.handleScreenCollision = function() {
 
 Player.prototype.draw = function() {
   this.ctx.fillStyle = "red";
-  this.ctx.fillRect(
+  var img = new Image();
+  img.src = "./images/car.png"
+  this.ctx.drawImage(
+    img,
     this.x,
     this.y,
     this.size,
