@@ -25,3 +25,7 @@ Person.prototype.draw = function() {
 Person.prototype.updatePosition = function() {
   this.y = this.y + this.speed;
 }
+
+Person.prototype.isInsideScreen = function() {
+  return this.y + this.size + this.speed;
+}
