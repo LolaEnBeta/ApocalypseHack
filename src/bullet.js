@@ -10,3 +10,13 @@ function Bullet(canvas, x, y) {
 
   this.speed = 5;
 }
+
+Bullet.prototype.draw = function() {
+  this.ctx.fillStyle = "grey";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
