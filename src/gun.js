@@ -21,3 +21,7 @@ Gun.prototype.draw = function() {
     this.size,
   );
 }
+
+Gun.prototype.updatePosition = function() {
+  this.y = this.y + this.speed;
+}
