@@ -40,6 +40,10 @@ function main() {
           <span class="points">Score:</span>
           <span class="value"></span>
         <div>
+        <div class="damage">
+          <span>Damage:</span>
+          <span class="value"></span>/100
+        <div>
         <div class="canvas-container">
           <canvas></canvas>
         </div>
@@ -59,7 +63,14 @@ function main() {
     gameOverScreen = buildDom(`
       <main>
         <h1>Game over</h1>
-        <p>Your score: <span></span></p>
+        <div class="score">
+          <span class="points">Score:</span>
+          <span class="value"></span>
+        <div>
+        <div class="damage">
+          <span>Damage:</span>
+          <span class="value"></span>/100
+        <div>
         <button>Restart</button>
       </main>
     `);

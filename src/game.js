@@ -9,11 +9,13 @@ function Game() {
   this.obstacles = [];
   this.gameScreen = null;
   this.gameIsOver = false;
-  this.score = 0;
+  this.scoreInfo = 0;
+  this.damageInfo = 0;
 }
 
 Game.prototype.start = function(gameOverCallback) {
-  this.score = this.gameScreen.querySelector(".score .value");
+  this.scoreInfo = this.gameScreen.querySelector(".score .value");
+  this.damageInfo = document.querySelector(".damage .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
   // this.containerWidth = this.canvasContainer.offsetWidth;
@@ -45,7 +47,7 @@ Game.prototype.start = function(gameOverCallback) {
 
 Game.prototype.startLoop = function(gameOverCallback) {
   this.setIntervalZombiesId = setInterval(() => {
-    var zombiesPositions = [280, 420, 560, 700];
+    var zombiesPositions = [210, 330, 465, 590];
 
     var randomX = zombiesPositions[Math.floor(Math.random() * 5)];
     var newZombie = new Zombie(this.canvas, randomX);
@@ -54,7 +56,7 @@ Game.prototype.startLoop = function(gameOverCallback) {
   }, 1500);
 
   this.setIntervalRepairKitsId = setInterval(() => {
-    var repairKitsPositions = [280, 420, 560, 700];
+    var repairKitsPositions = [210, 330, 465, 590];
 
     var randomRepairKitX = repairKitsPositions[Math.floor(Math.random() * 5)];
     var newRepairKit = new RepairKit(this.canvas, randomRepairKitX);
@@ -63,7 +65,7 @@ Game.prototype.startLoop = function(gameOverCallback) {
   }, 2500);
 
   this.setIntervalObstaclesId = setInterval(() => {
-    var obstaclesPositions = [280, 420, 560, 700];
+    var obstaclesPositions = [200, 320, 455, 580];
 
     var randomObstacleX = obstaclesPositions[Math.floor(Math.random() * 5)];
     var newObstacle = new Obstacle(this.canvas, randomObstacleX);
@@ -113,6 +115,7 @@ Game.prototype.startLoop = function(gameOverCallback) {
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
       window.requestAnimationFrame(loop);
+      this.showInfo();
     }
   }.bind(this);
 
@@ -149,4 +152,9 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     clearInterval(this.setIntervalObstaclesId);
     gameOverCallback();
   }
+}
+
+Game.prototype.showInfo = function() {
+  this.scoreInfo.innerHTML = this.player.score;
+  this.damageInfo.innerHTML = this.player.damage;
 }
