@@ -75,12 +75,12 @@ Game.prototype.startLoop = function(gameOverCallback) {
   }, 2500);
 
   this.setIntervalPersonsId = setInterval(() => {
-    var personsPositions = [200, 320, 455, 580];
+    var personsPositions = [210, 330, 465, 590];
 
     var randomPersonX = personsPositions[Math.floor(Math.random() * 5)];
-    var newPerson = new Obstacle(this.canvas, randomPersonX);
+    var newPerson = new Person(this.canvas, randomPersonX);
 
-    this.obstacles.push(newPerson);
+    this.persons.push(newPerson);
   }, 2500);
 
   var loop = function() {
@@ -104,6 +104,11 @@ Game.prototype.startLoop = function(gameOverCallback) {
       return obstacle.isInsideScreen();
     });
 
+    this.persons = this.persons.filter(function(person) {
+      person.updatePosition();
+      return person.isInsideScreen();
+    });
+
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -120,6 +125,10 @@ Game.prototype.startLoop = function(gameOverCallback) {
 
     this.obstacles.forEach(function(obstacle) {
       obstacle.draw();
+    });
+
+    this.persons.forEach(function(person) {
+      person.draw();
     });
 
     //4. TERMINATE LOOP IF GAME IS OVER
@@ -155,11 +164,19 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     }
   }, this);
 
+  this.persons.forEach(function(person) {
+    if (this.player.didCollide(person)) {
+      person.y = this.canvas.height + person.size;
+      this.player.receiveDamage(person.life);
+    }
+  }, this);
+
   if (this.player.damage >= 100 || this.player.lifes === 0) {
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
     clearInterval(this.setIntervalRepairKitsId);
     clearInterval(this.setIntervalObstaclesId);
+    clearInterval(this.setIntervalPersonsId);
     gameOverCallback();
   }
 }
