@@ -8,16 +8,16 @@ function Game() {
   this.repairKits = [];
   this.obstacles = [];
   this.persons = [];
+  this.guns = [];
   this.gameScreen = null;
   this.gameIsOver = false;
-  this.scoreInfo = 0;
-  this.damageInfo = 0;
 }
 
 Game.prototype.start = function(gameOverCallback) {
   this.scoreInfo = this.gameScreen.querySelector(".score .value");
   this.damageInfo = document.querySelector(".damage .value");
   this.lifeInfo = document.querySelector(".life .value");
+  this.gunInfo = document.querySelector(".gun .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
   // this.containerWidth = this.canvasContainer.offsetWidth;
@@ -84,6 +84,15 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.persons.push(newPerson);
   }, 50000);
 
+  this.setIntervalGunsId = setInterval(() => {
+    var gunsPositions = [210, 330, 465, 590];
+
+    var randomGunX = gunsPositions[Math.floor(Math.random() * 5)];
+    var newGun = new Gun(this.canvas, randomGunX);
+
+    this.guns.push(newGun);
+  }, 25000);
+
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
     this.checkCollisions(gameOverCallback);
@@ -110,6 +119,11 @@ Game.prototype.startLoop = function(gameOverCallback) {
       return person.isInsideScreen();
     });
 
+    this.guns = this.guns.filter(function(gun) {
+      gun.updatePosition();
+      return gun.isInsideScreen();
+    });
+
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -130,6 +144,10 @@ Game.prototype.startLoop = function(gameOverCallback) {
 
     this.persons.forEach(function(person) {
       person.draw();
+    });
+
+    this.guns.forEach(function(gun) {
+      gun.draw();
     });
 
     //4. TERMINATE LOOP IF GAME IS OVER
@@ -173,12 +191,20 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     }
   }, this);
 
+  this.guns.forEach(function(gun) {
+    if (this.player.didCollide(gun)) {
+      gun.y = this.canvas.height + gun.size;
+      this.player.obtainGun();
+    }
+  }, this);
+
   if (this.player.damage >= 100 || this.player.lifes === 0) {
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
     clearInterval(this.setIntervalRepairKitsId);
     clearInterval(this.setIntervalObstaclesId);
     clearInterval(this.setIntervalPersonsId);
+    clearInterval(this.setIntervalGunsId);
     gameOverCallback();
   }
 }
@@ -187,4 +213,5 @@ Game.prototype.showInfo = function() {
   this.scoreInfo.innerHTML = this.player.score;
   this.damageInfo.innerHTML = this.player.damage;
   this.lifeInfo.innerHTML = this.player.life;
+  this.gunInfo.innerHTML = this.player.hasGun;
 }

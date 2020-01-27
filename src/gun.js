@@ -14,7 +14,10 @@ function Gun(canvas, x) {
 
 Gun.prototype.draw = function() {
   this.ctx.fillStyle = "purple";
-  this.ctx.fillRect(
+  var img = new Image();
+  img.src = "./images/gun.png";
+  this.ctx.drawImage(
+    img,
     this.x,
     this.y,
     this.size,
@@ -24,4 +27,8 @@ Gun.prototype.draw = function() {
 
 Gun.prototype.updatePosition = function() {
   this.y = this.y + this.speed;
+}
+
+Gun.prototype.isInsideScreen = function() {
+  return this.y + this.size + this.speed;
 }

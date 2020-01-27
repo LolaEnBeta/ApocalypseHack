@@ -14,6 +14,7 @@ function Player(canvas) {
   this.score = 0;
   this.damage = 0;
   this.life = 5;
+  this.hasGun = "No";
 }
 
 Player.prototype.move = function(direction) {
@@ -92,4 +93,8 @@ Player.prototype.gainLife = function(life) {
   if (this.life < 5) {
     this.life += life;
   }
+}
+
+Player.prototype.obtainGun = function() {
+  this.hasGun = "Yes";
 }

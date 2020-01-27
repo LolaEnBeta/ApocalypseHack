@@ -48,6 +48,10 @@ function main() {
           <span>Lifes:</span>
           <span class="value"></span>
         <div>
+        <div class="gun">
+          <span>You have a gun?</span>
+          <span class="value"></span>
+        <div>
         <div class="canvas-container">
           <canvas></canvas>
         </div>
