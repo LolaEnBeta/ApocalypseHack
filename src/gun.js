@@ -11,3 +11,13 @@ function Gun(canvas, x) {
   this.speed = 1;
   this.shots = 5;
 }
+
+Gun.prototype.draw = function() {
+  this.ctx.fillStyle = "purple";
+  this.ctx.fillRect(
+    this.x,
+    this.y,
+    this.size,
+    this.size,
+  );
+}
