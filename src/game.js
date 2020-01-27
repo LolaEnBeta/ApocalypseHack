@@ -82,7 +82,7 @@ Game.prototype.startLoop = function(gameOverCallback) {
     var newPerson = new Person(this.canvas, randomPersonX);
 
     this.persons.push(newPerson);
-  }, 2500);
+  }, 50000);
 
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
