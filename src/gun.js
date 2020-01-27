@@ -5,6 +5,8 @@ function Gun(canvas, x) {
   this.ctx = this.canvas.getContext("2d");
 
   this.size = 45;
+  this.width = 60;
+  this.height = 45;
   this.x = x;
   this.y = 0;
 
@@ -20,8 +22,8 @@ Gun.prototype.draw = function() {
     img,
     this.x,
     this.y,
-    this.size,
-    this.size,
+    this.width,
+    this.height,
   );
 }
 
