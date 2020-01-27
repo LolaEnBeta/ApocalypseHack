@@ -169,7 +169,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
   this.persons.forEach(function(person) {
     if (this.player.didCollide(person)) {
       person.y = this.canvas.height + person.size;
-      this.player.receiveDamage(person.life);
+      this.player.gainLife(person.life);
     }
   }, this);
 

@@ -85,5 +85,11 @@ Player.prototype.repairDamage = function(removeDamage) {
 }
 
 Player.prototype.removeLife = function(life) {
-  this.life--;
+  this.life -= life;
+}
+
+Player.prototype.gainLife = function(life) {
+  if (this.life < 5) {
+    this.life += life;
+  }
 }
