@@ -4,12 +4,12 @@ function Player(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
 
-  this.large = 75;
-  this.anch = 50
+  this.height = 85;
+  this.width = 60
 
   this.size = 75;
   this.x = 200 - (this.size / 2);
-  this.y = this.canvas.height - this.size - 10;
+  this.y = this.canvas.height - this.size - 20;
 
   this.score = 0;
   this.damage = 0;
@@ -25,12 +25,12 @@ Player.prototype.move = function(direction) {
 
 Player.prototype.handleScreenCollision = function() {
   var screenLeft = 200;
-  var screenRight = 700;
+  var screenRight = 575;
 
   if (this.x < screenLeft) {
     this.x = 200;
   } else if (this.x > screenRight) {
-    this.x = 700;
+    this.x = 575;
   }
 }
 
@@ -42,8 +42,8 @@ Player.prototype.draw = function() {
     img,
     this.x,
     this.y,
-    this.anch,
-    this.large,
+    this.width,
+    this.height,
   );
 }
 
