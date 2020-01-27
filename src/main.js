@@ -44,6 +44,10 @@ function main() {
           <span>Damage:</span>
           <span class="value"></span>/100
         <div>
+        <div class="life">
+          <span>Lifes:</span>
+          <span class="value"></span>
+        <div>
         <div class="canvas-container">
           <canvas></canvas>
         </div>

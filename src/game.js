@@ -17,6 +17,7 @@ function Game() {
 Game.prototype.start = function(gameOverCallback) {
   this.scoreInfo = this.gameScreen.querySelector(".score .value");
   this.damageInfo = document.querySelector(".damage .value");
+  this.lifeInfo = document.querySelector(".life .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
   // this.containerWidth = this.canvasContainer.offsetWidth;
@@ -161,6 +162,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     if (this.player.didCollide(obstacle)) {
       obstacle.y = this.canvas.height + obstacle.size;
       this.player.receiveDamage(obstacle.damage);
+      this.player.removeLife(obstacle.lifeToRemove);
     }
   }, this);
 
@@ -184,4 +186,5 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
 Game.prototype.showInfo = function() {
   this.scoreInfo.innerHTML = this.player.score;
   this.damageInfo.innerHTML = this.player.damage;
+  this.lifeInfo.innerHTML = this.player.life;
 }

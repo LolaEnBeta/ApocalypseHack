@@ -10,6 +10,7 @@ function Obstacle(canvas, x) {
 
   this.speed = 1;
   this.damage = 20;
+  this.lifeToRemove = 1;
 }
 
 Obstacle.prototype.draw = function() {

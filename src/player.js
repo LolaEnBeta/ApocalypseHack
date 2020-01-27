@@ -13,6 +13,7 @@ function Player(canvas) {
 
   this.score = 0;
   this.damage = 0;
+  this.life = 5;
 }
 
 Player.prototype.move = function(direction) {
@@ -81,4 +82,8 @@ Player.prototype.repairDamage = function(removeDamage) {
   if (this.damage >= 10) {
     this.damage -= removeDamage;
   }
+}
+
+Player.prototype.removeLife = function(life) {
+  this.life--;
 }
