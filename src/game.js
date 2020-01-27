@@ -36,6 +36,8 @@ Game.prototype.start = function(gameOverCallback) {
       this.player.move("left");
     } else if (event.key === "ArrowRight") {
       this.player.move("right");
+    } else if (event.key === " ") {
+      console.log("space")
     }
   }
 
