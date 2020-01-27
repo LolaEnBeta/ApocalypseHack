@@ -20,3 +20,7 @@ Bullet.prototype.draw = function() {
     this.size,
   );
 }
+
+Bullet.prototype.updatePosition = function() {
+  this.y = this.y + this.speed;
+}
