@@ -100,8 +100,13 @@ Player.prototype.obtainGun = function() {
   this.hasGun = "Yes";
 }
 
-Player.prototype.shot = function() {
-  var bullet = new Bullet(this.canvas, this.x, this.y);
+Player.prototype.shot = function(bullets) {
+  var bullet = bullets [0];
+  bullet.x = this.x;
+  bullet.y = this.y;
+  bullet.isInsideScreen();
   bullet.updatePosition();
   bullet.draw();
+  console.log("shooting")
+
 }

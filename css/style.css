@@ -1,3 +1,14 @@
 canvas {
   background-image: url(../images/background.png);
 }
+
+body {
+  color: white;
+  background-image: url(../images/principalBG.jpg);
+  background-repeat: no-repeat;
+}
+
+img .command {
+  width: 5px;
+  height: 5px;
+}

@@ -13,9 +13,28 @@ function main() {
   var gameOverScreen;
 
   function createSplashScreen() {
+    var story = "Zombies! Yes, you are right! So prepare yourself. You need to arrive to this safety place everyone is talking about. And, why not? Try to make the world much better killing some zombies. Good luck!";
+    var commands ="Use the left and right arrows of your keyboard to move you.";
+
     splashScreen = buildDom(
       `<main>
         <h1>APOCALYPSE-HACK</h1>
+        <section class="content">
+        <p><em> - WTF!!?? Why is this guy moving like this?? Oh.. Wait… It could not be possible!!</em></p>
+        <p>${story}</p>
+        <div>
+          <img class="command" src="./images/arrL.png" alt="left command" />
+          <img class="command" src="./images/arrR.png" alt="right command" />
+          <p>${commands}</p>
+        </div>
+        <ul>
+          <li>Move LEFT to RIGHT to move you</li>
+          <li>Drive over the zombies to gain XP</li>
+          <li>Don't crash with the barricades, it removes life and damage your car</li>
+          <li>Use "repair kits" to fix your brocken car</li>
+          <li>Pick up health people to gain life points</li>
+        </ul>
+        </section>
         <button>START</button>
       </main>`
     );
@@ -36,6 +55,7 @@ function main() {
         <header>
           <h1>APOCALYPSE-HACK</h1>
         </header>
+        <div>
         <div class="score">
           <span class="points">Score:</span>
           <span class="value"></span>
@@ -56,6 +76,7 @@ function main() {
           <span>You have a gun?</span>
           <span class="value"></span>
         <div>
+        </div>
         <div class="canvas-container">
           <canvas></canvas>
         </div>

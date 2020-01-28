@@ -9,6 +9,7 @@ function Game() {
   this.obstacles = [];
   this.persons = [];
   this.guns = [];
+  this.bullets = [];
   this.gameScreen = null;
   this.gameIsOver = false;
 }
@@ -37,10 +38,6 @@ Game.prototype.start = function(gameOverCallback) {
       this.player.move("left");
     } else if (event.key === "ArrowRight") {
       this.player.move("right");
-    } else if (event.key === " ") {
-      if(this.player.hasGun === "Yes") {
-        this.player.shot();
-      }
     }
   }
 
@@ -98,6 +95,13 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.guns.push(newGun);
   }, 25000);
 
+  this.setIntervalBulletsId = setInterval(() => {
+    var newBullet = new Bullet(this.canvas);
+    newBullet.x = this.player.x;
+    newBullet.y = this.player.y;
+    this.bullets.push(newBullet);
+  }, 1000);
+
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
     this.checkCollisions(gameOverCallback);
@@ -129,6 +133,11 @@ Game.prototype.startLoop = function(gameOverCallback) {
       return gun.isInsideScreen();
     });
 
+    this.bullets = this.bullets.filter(function(bullet) {
+      bullet.updatePosition();
+      return bullet.isInsideScreen();
+    });
+
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -154,6 +163,17 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.guns.forEach(function(gun) {
       gun.draw();
     });
+
+    // if(this.player.hasGun === "Yes") {
+    //   //this.player.shot(this.bullets);
+    //   this.handleKeyDown = function(event) {
+    //     if (event.key === " ") {
+    //       this.bullets.forEach(function(bullet) {
+    //         bullet.draw();
+    //       }
+    //     }
+    //   }
+    // }
 
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {

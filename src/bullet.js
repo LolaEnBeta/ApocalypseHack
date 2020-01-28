@@ -1,6 +1,6 @@
 "use strict";
 
-function Bullet(canvas, x, y) {
+function Bullet(canvas) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext("2d");
 
@@ -8,11 +8,11 @@ function Bullet(canvas, x, y) {
   this.x = null;
   this.y = null;
 
-  this.speed = 5;
+  this.speed = 50;
 }
 
 Bullet.prototype.draw = function() {
-  this.ctx.fillStyle = "grey";
+  this.ctx.fillStyle = "red";
   this.ctx.fillRect(
     this.x,
     this.y,
@@ -22,7 +22,7 @@ Bullet.prototype.draw = function() {
 }
 
 Bullet.prototype.updatePosition = function() {
-  this.y = this.y + this.speed;
+  this.y = this.y - this.speed;
 }
 
 Bullet.prototype.isInsideScreen = function() {
