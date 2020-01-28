@@ -211,6 +211,8 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     clearInterval(this.setIntervalGunsId);
     gameOverCallback();
   }
+
+  this.increaseSpeed();
 }
 
 Game.prototype.showInfo = function() {
@@ -218,4 +220,42 @@ Game.prototype.showInfo = function() {
   this.damageInfo.innerHTML = this.player.damage;
   this.lifeInfo.innerHTML = this.player.life;
   this.gunInfo.innerHTML = this.player.hasGun;
+}
+
+Game.prototype.increaseSpeedOfEveryObj = function(newSpeed) {
+  this.zombies.forEach((zombie) => {
+    zombie.speed = newSpeed;
+  });
+  this.obstacles.forEach((obstacle) => {
+    obstacle.speed = newSpeed;
+  });
+  this.persons.forEach((person) => {
+    person.speed = newSpeed;
+  });
+  this.repairKits.forEach((repairKit) => {
+    repairKit.speed = newSpeed;
+  });
+  this.guns.forEach((gun) => {
+    gun.speed = newSpeed;
+  });
+}
+
+Game.prototype.increaseSpeed = function() {
+  if (this.player.score >= 5 && this.player.score < 10) {
+    this.increaseSpeedOfEveryObj(2.5);
+  } else if (this.player.score >= 10 && this.player.score < 15) {
+    this.increaseSpeedOfEveryObj(5);
+  } else if (this.player.score >= 15 && this.player.score < 20) {
+    this.increaseSpeedOfEveryObj(7.5);
+  } else if (this.player.score >= 20 && this.player.score < 25) {
+    this.increaseSpeedOfEveryObj(10);
+  } else if (this.player.score >= 25 && this.player.score < 30) {
+    this.increaseSpeedOfEveryObj(12.5);
+  } else if (this.player.score >= 30 && this.player.score < 35) {
+    this.increaseSpeedOfEveryObj(15);
+  } else if (this.player.score >= 35 && this.player.score < 40) {
+    this.increaseSpeedOfEveryObj(17.5);
+  } else if (this.player.score >= 40) {
+    this.increaseSpeedOfEveryObj(20);
+  }
 }
