@@ -15,6 +15,7 @@ function Player(canvas) {
   this.damage = 0;
   this.life = 5;
   this.hasGun = "No";
+  this.level = 1;
 }
 
 Player.prototype.move = function(direction) {

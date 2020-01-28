@@ -18,6 +18,7 @@ Game.prototype.start = function(gameOverCallback) {
   this.damageInfo = document.querySelector(".damage .value");
   this.lifeInfo = document.querySelector(".life .value");
   this.gunInfo = document.querySelector(".gun .value");
+  this.levelInfo = document.querySelector(".level .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
   // this.containerWidth = this.canvasContainer.offsetWidth;
@@ -220,6 +221,7 @@ Game.prototype.showInfo = function() {
   this.damageInfo.innerHTML = this.player.damage;
   this.lifeInfo.innerHTML = this.player.life;
   this.gunInfo.innerHTML = this.player.hasGun;
+  this.levelInfo.innerHTML = this.player.level;
 }
 
 Game.prototype.increaseSpeedOfEveryObj = function(newSpeed) {
@@ -243,19 +245,27 @@ Game.prototype.increaseSpeedOfEveryObj = function(newSpeed) {
 Game.prototype.increaseSpeed = function() {
   if (this.player.score >= 5 && this.player.score < 10) {
     this.increaseSpeedOfEveryObj(2.5);
+    this.player.level = 2;
   } else if (this.player.score >= 10 && this.player.score < 15) {
     this.increaseSpeedOfEveryObj(5);
+    this.player.level = 3;
   } else if (this.player.score >= 15 && this.player.score < 20) {
     this.increaseSpeedOfEveryObj(7.5);
+    this.player.level = 4;
   } else if (this.player.score >= 20 && this.player.score < 25) {
     this.increaseSpeedOfEveryObj(10);
+    this.player.level = 5;
   } else if (this.player.score >= 25 && this.player.score < 30) {
     this.increaseSpeedOfEveryObj(12.5);
+    this.player.level = 6;
   } else if (this.player.score >= 30 && this.player.score < 35) {
     this.increaseSpeedOfEveryObj(15);
+    this.player.level = 7;
   } else if (this.player.score >= 35 && this.player.score < 40) {
     this.increaseSpeedOfEveryObj(17.5);
+    this.player.level = 8;
   } else if (this.player.score >= 40) {
     this.increaseSpeedOfEveryObj(20);
+    this.player.level = 9;
   }
 }
