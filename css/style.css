@@ -9,7 +9,7 @@ body {
   background-repeat: no-repeat;
 }
 
-main {
+.principal-main {
   border: 5px solid red;
   border-style: dashed;
   border-radius: 15px;

@@ -17,20 +17,22 @@ function main() {
     var commands ="Use the left [<-] and right [->] arrows of your keyboard to move you.";
 
     splashScreen = buildDom(
-      `<main class="principal-main">
-        <h1>APOCALYPSE - HACK</h1>
-        <section class="content">
-        <p class="comment"><em> - WTF!!?? Why is this guy moving like this?? Oh.. Wait… It could not be possible!!</em></p>
-        <p>${story}</p>
-        <p>${commands}</p>
-        <ul>
+      `<main >
+        <div class ="principal-main">
+          <h1>APOCALYPSE - HACK</h1>
+          <section class="content">
+          <p class="comment"><em> - WTF!!?? Why is this guy moving like this?? Oh.. Wait… It could not be possible!!</em></p>
+          <p>${story}</p>
+          <p>${commands}</p>
+          <ul>
           <li>Drive over the zombies to gain XP</li>
           <li>Don't crash with the barricades, it removes life and damage your car</li>
           <li>Use "repair kits" to fix your brocken car</li>
           <li>Pick up health people to gain life points</li>
-        </ul>
-        </section>
-        <button class="start">START</button>
+          </ul>
+          </section>
+          <button class="start">START</button>
+        </div>
       </main>`
     );
 
