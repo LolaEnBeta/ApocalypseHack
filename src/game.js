@@ -12,6 +12,7 @@ function Game() {
   this.bullets = [];
   this.gameScreen = null;
   this.gameIsOver = false;
+  this.score = 0;
 }
 
 Game.prototype.start = function(gameOverCallback) {
@@ -178,8 +179,10 @@ Game.prototype.startLoop = function(gameOverCallback) {
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
       window.requestAnimationFrame(loop);
-      this.showInfo();
     }
+
+    //Update the Game data/stats
+    this.showInfo();
   }.bind(this);
 
   window.requestAnimationFrame(loop);
@@ -224,6 +227,7 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
   }, this);
 
   if (this.player.damage >= 100 || this.player.lifes === 0) {
+    this.score = this.player.score;
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
     clearInterval(this.setIntervalRepairKitsId);

@@ -92,26 +92,22 @@ function main() {
     gameScreen.remove();
   }
 
-  function createGameOverScreen(score) {
+  function createGameOverScreen() {
     gameOverScreen = buildDom(`
       <main>
         <h1>Game over</h1>
         <div class="score">
           <span class="points">Score:</span>
-          <span class="value"></span>
+          <span class="value">${game.score}</span>
         <div>
         <button>Restart</button>
       </main>
     `);
 
+    document.body.appendChild(gameOverScreen);
+
     var restartButton = gameOverScreen.querySelector("button");
     restartButton.addEventListener("click", startGame);
-
-    var endScore = gameOverScreen.querySelector(".score .value");
-    console.log(score);
-    endScore.innerText = score;
-
-    document.body.appendChild(gameOverScreen);
   }
 
   function removeGameOverScreen() {
@@ -132,9 +128,9 @@ function main() {
 
   }
 
-  function gameOver(score) {
+  function gameOver() {
     removeGameScreen();
-    createGameOverScreen(score);
+    createGameOverScreen();
   }
 
 
