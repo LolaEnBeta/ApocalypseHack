@@ -8,23 +8,18 @@ function Game() {
   this.repairKits = [];
   this.obstacles = [];
   this.persons = [];
-  this.guns = [];
-  this.bullets = [];
   this.gameScreen = null;
   this.gameIsOver = false;
   this.score = 0;
 }
 
 Game.prototype.start = function(gameOverCallback) {
-  this.scoreInfo = this.gameScreen.querySelector(".score .value");
+  this.scoreInfo = this.gameScreen.querySelector(".game-score .value");
   this.damageInfo = document.querySelector(".damage .value");
   this.lifeInfo = document.querySelector(".life .value");
-  this.gunInfo = document.querySelector(".gun .value");
   this.levelInfo = document.querySelector(".level .value");
 
   this.canvasContainer = document.querySelector(".canvas-container");
-  // this.containerWidth = this.canvasContainer.offsetWidth;
-  // this.containerHeight = this.canvasContainer.offsetHeight;
 
   this.canvas = this.gameScreen.querySelector("canvas");
   this.ctx = this.canvas.getContext("2d");
@@ -87,22 +82,6 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.persons.push(newPerson);
   }, 50000);
 
-  this.setIntervalGunsId = setInterval(() => {
-    var gunsPositions = [210, 330, 465, 590];
-
-    var randomGunX = gunsPositions[Math.floor(Math.random() * 5)];
-    var newGun = new Gun(this.canvas, randomGunX);
-
-    this.guns.push(newGun);
-  }, 25000);
-
-  this.setIntervalBulletsId = setInterval(() => {
-    var newBullet = new Bullet(this.canvas);
-    newBullet.x = this.player.x;
-    newBullet.y = this.player.y;
-    this.bullets.push(newBullet);
-  }, 1000);
-
   var loop = function() {
     //1. UPDATE THE STATE OF PLAYER
     this.checkCollisions(gameOverCallback);
@@ -129,16 +108,6 @@ Game.prototype.startLoop = function(gameOverCallback) {
       return person.isInsideScreen();
     });
 
-    this.guns = this.guns.filter(function(gun) {
-      gun.updatePosition();
-      return gun.isInsideScreen();
-    });
-
-    this.bullets = this.bullets.filter(function(bullet) {
-      bullet.updatePosition();
-      return bullet.isInsideScreen();
-    });
-
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -160,21 +129,6 @@ Game.prototype.startLoop = function(gameOverCallback) {
     this.persons.forEach(function(person) {
       person.draw();
     });
-
-    this.guns.forEach(function(gun) {
-      gun.draw();
-    });
-
-    // if(this.player.hasGun === "Yes") {
-    //   //this.player.shot(this.bullets);
-    //   this.handleKeyDown = function(event) {
-    //     if (event.key === " ") {
-    //       this.bullets.forEach(function(bullet) {
-    //         bullet.draw();
-    //       }
-    //     }
-    //   }
-    // }
 
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
@@ -219,13 +173,6 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     }
   }, this);
 
-  this.guns.forEach(function(gun) {
-    if (this.player.didCollide(gun)) {
-      gun.y = this.canvas.height + gun.size;
-      this.player.obtainGun();
-    }
-  }, this);
-
   if (this.player.damage >= 100 || this.player.lifes === 0) {
     this.score = this.player.score;
     this.gameIsOver = true;
@@ -233,7 +180,6 @@ Game.prototype.checkCollisions = function(gameOverCallback) {
     clearInterval(this.setIntervalRepairKitsId);
     clearInterval(this.setIntervalObstaclesId);
     clearInterval(this.setIntervalPersonsId);
-    clearInterval(this.setIntervalGunsId);
     gameOverCallback();
   }
 
@@ -244,7 +190,6 @@ Game.prototype.showInfo = function() {
   this.scoreInfo.innerHTML = this.player.score;
   this.damageInfo.innerHTML = this.player.damage;
   this.lifeInfo.innerHTML = this.player.life;
-  this.gunInfo.innerHTML = this.player.hasGun;
   this.levelInfo.innerHTML = this.player.level;
 }
 
@@ -260,9 +205,6 @@ Game.prototype.increaseSpeedOfEveryObj = function(newSpeed) {
   });
   this.repairKits.forEach((repairKit) => {
     repairKit.speed = newSpeed;
-  });
-  this.guns.forEach((gun) => {
-    gun.speed = newSpeed;
   });
 }
 

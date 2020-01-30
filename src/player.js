@@ -14,7 +14,6 @@ function Player(canvas) {
   this.score = 0;
   this.damage = 0;
   this.life = 5;
-  this.hasGun = "No";
   this.level = 1;
 }
 
@@ -50,21 +49,21 @@ Player.prototype.draw = function() {
   );
 }
 
-Player.prototype.didCollide = function(zombie) {
+Player.prototype.didCollide = function(obstacle) {
   var playerTop = this.y;
   var playerBottom = this.y + this.size;
   var playerLeft = this.x;
   var playerRight = this.x + this.size;
 
-  var zombieTop = zombie.y;
-  var zombieBottom = zombie.y + zombie.size;
-  var zombieLeft = zombie.x;
-  var zombieRight = zombie.x + zombie.size;
+  var obstacleTop = obstacle.y;
+  var obstacleBottom = obstacle.y + obstacle.size;
+  var obstacleLeft = obstacle.x;
+  var obstacleRight = obstacle.x + obstacle.size;
 
-  var crossLeft = zombieLeft <= playerRight && zombieLeft >= playerLeft;
-  var crossRight = zombieRight >= playerLeft && zombieRight <= playerRight;
-  var crossBottom = zombieBottom >= playerTop && zombieBottom <= playerBottom;
-  var crossTop = zombieTop <= playerBottom && zombieTop >= playerTop;
+  var crossLeft = obstacleLeft <= playerRight && obstacleLeft >= playerLeft;
+  var crossRight = obstacleRight >= playerLeft && obstacleRight <= playerRight;
+  var crossBottom = obstacleBottom >= playerTop && obstacleBottom <= playerBottom;
+  var crossTop = obstacleTop <= playerBottom && obstacleTop >= playerTop;
 
   if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
     return true;
@@ -94,19 +93,4 @@ Player.prototype.gainLife = function(life) {
   if (this.life < 5) {
     this.life += life;
   }
-}
-
-Player.prototype.obtainGun = function() {
-  this.hasGun = "Yes";
-}
-
-Player.prototype.shot = function(bullets) {
-  var bullet = bullets [0];
-  bullet.x = this.x;
-  bullet.y = this.y;
-  bullet.isInsideScreen();
-  bullet.updatePosition();
-  bullet.draw();
-  console.log("shooting")
-
 }
