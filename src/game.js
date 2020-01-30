@@ -49,19 +49,19 @@ Game.prototype.startLoop = function(gameOverCallback) {
     //1. UPDATE THE STATE OF PLAYER
     this.checkCollisions();
 
-    this.isGameOver(gameOverCallback);
-
     this.increaseSpeed();
 
     this.player.handleScreenCollision();
 
-    this.areObjectsInsideScreen();
+    this.moveObjectsInsideScreen();
 
     //2. CLEAR CANVAS
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     //3. UPDATE THE CANVAS
     this.drawObjects();
+
+    this.isGameOver(gameOverCallback);
 
     //4. TERMINATE LOOP IF GAME IS OVER
     if (!this.gameIsOver) {
@@ -70,6 +70,7 @@ Game.prototype.startLoop = function(gameOverCallback) {
 
     //Update the Game data/stats
     this.showInfo();
+
   }.bind(this);
 
   window.requestAnimationFrame(loop);
@@ -134,6 +135,8 @@ Game.prototype.increaseSpeedOfEveryObj = function(newSpeed) {
   this.repairKits.forEach((repairKit) => {
     repairKit.speed = newSpeed;
   });
+
+  backgroundImage.speed = newSpeed;
 }
 
 Game.prototype.increaseSpeed = function() {
@@ -164,7 +167,7 @@ Game.prototype.increaseSpeed = function() {
   }
 }
 
-Game.prototype.areObjectsInsideScreen = function() {
+Game.prototype.moveObjectsInsideScreen = function() {
   this.zombies = this.zombies.filter(function(zombie) {
     zombie.updatePosition();
     return zombie.isInsideScreen();
@@ -187,6 +190,9 @@ Game.prototype.areObjectsInsideScreen = function() {
 }
 
 Game.prototype.drawObjects = function() {
+  backgroundImage.move(this.canvas);
+  backgroundImage.draw(this.canvas,this.ctx);
+
   this.player.draw();
 
   this.zombies.forEach(function(zombie) {
@@ -208,6 +214,7 @@ Game.prototype.drawObjects = function() {
 
 Game.prototype.isGameOver = function(gameOverCallback) {
   if (this.player.damage >= 100 || this.player.lifes === 0) {
+    backgroundImage.resetSpeed();
     this.score = this.player.score;
     this.gameIsOver = true;
     clearInterval(this.setIntervalZombiesId);
@@ -230,7 +237,7 @@ Game.prototype.createCanvas = function() {
   this.ctx = this.canvas.getContext("2d");
 
   this.canvas.setAttribute("width", 840);
-  this.canvas.setAttribute("height", 600);
+  this.canvas.setAttribute("height", 650);
 }
 
 Game.prototype.createZombies = function() {
@@ -276,3 +283,30 @@ Game.prototype.createPersons = function() {
     this.persons.push(newPerson);
   }, 50000);
 }
+
+var img_background = new Image();
+img_background.src = './images/background.png'
+
+var backgroundImage = {
+  img: img_background,
+  y: 0,
+  speed: 1,
+
+  move: function(canvas) {
+    this.y += this.speed;
+    this.y %= canvas.height;
+  },
+
+  draw: function(canvas,ctx) {
+    ctx.drawImage(this.img, 0, this.y);
+    if (this.speed < 0) {
+      ctx.drawImage(this.img, 0, this.y + canvas.height, canvas.width, canvas.height);
+    } else {
+      ctx.drawImage(this.img, 0, this.y - this.img.height, canvas.width, canvas.height);
+    }
+  },
+
+  resetSpeed: function() {
+    this.speed = 1;
+  },
+};
