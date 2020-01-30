@@ -74,6 +74,7 @@ li {
 
 .canvas-container {
   margin-left: 55px;
+  margin-top: -5px;
 }
 
 .game-container {
@@ -92,6 +93,7 @@ li {
   padding: 35px;
   padding-bottom: 45px;
   font-size: 35px;
+  margin-top: -25px;
   margin-bottom: -20px;
 }
 
