@@ -11,6 +11,8 @@ function Game() {
   this.gameScreen = null;
   this.gameIsOver = false;
   this.score = 0;
+  this.zombieSound = new Audio("./sounds/Zombie.wav");
+  this.crashSound = new Audio("./sounds/car_crash.mp3");
 }
 
 Game.prototype.start = function(gameOverCallback) {
@@ -79,6 +81,8 @@ Game.prototype.checkCollisions = function() {
       zombie.y = this.canvas.height + zombie.size;
       this.player.updateScore();
       this.player.receiveDamage(zombie.damage);
+      this.zombieSound.play();
+      this.zombieSound.currentTime = 0;
     }
   }, this);
 
@@ -94,6 +98,8 @@ Game.prototype.checkCollisions = function() {
       obstacle.y = this.canvas.height + obstacle.size;
       this.player.receiveDamage(obstacle.damage);
       this.player.removeLife(obstacle.lifeToRemove);
+      this.crashSound.play();
+      this.crashSound.currentTime = 0;
     }
   }, this);
 
