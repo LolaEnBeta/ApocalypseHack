@@ -19,7 +19,7 @@ function main() {
     splashScreen = buildDom(
       `<main >
         <div class ="principal-main">
-          <h1>APOCALYPSE - HACK</h1>
+          <h1 class="principal-title">APOCALYPSE - HACK</h1>
           <section class="content">
           <p class="comment"><em> - WTF!!?? Why is this guy moving like this?? Oh.. Wait… It could not be possible!!</em></p>
           <p>${story}</p>
@@ -48,31 +48,20 @@ function main() {
 
   function createGameScreen() {
     gameScreen = buildDom(`
-      <main class="game container">
-        <header>
-          <h1>APOCALYPSE-HACK</h1>
-        </header>
-        <div>
-        <div class="score">
-          <span class="points">Score:</span>
-          <span class="value"></span>
-        <div>
-        <div class="damage">
-          <span>Damage:</span>
-          <span class="value"></span>/100
-        <div>
-        <div class="life">
-          <span>Lifes:</span>
-          <span class="value"></span>
-        <div>
-        <div class="level">
-          <span>Level: </span>
-          <span class="value"></span>
-        <div>
-        <div class="gun">
-          <span>You have a gun?</span>
-          <span class="value"></span>
-        <div>
+      <main >
+        <div class="game-container">
+          <div class="game-score">
+            Score: <span class="value"></span>
+          </div>
+          <div class="damage">
+            Damage: <span class="value"></span>/100
+          </div>
+          <div class="life">
+            Lifes: <span class="value"></span>
+          </div>
+          <div class="level">
+            Level: <span class="value"></span>
+          </div>
         </div>
         <div class="canvas-container">
           <canvas></canvas>
@@ -91,13 +80,12 @@ function main() {
 
   function createGameOverScreen() {
     gameOverScreen = buildDom(`
-      <main>
-        <h1>Game over</h1>
+      <main class="over-main">
+        <h1 class="over-title">You are DEAD!</h1>
         <div class="score">
-          <span class="points">Score:</span>
-          <span class="value">${game.score}</span>
+        Your final is score: <span class="value">${game.score}</span> XP.
         <div>
-        <button>Restart</button>
+        <button class="restart">Restart</button>
       </main>
     `);
 

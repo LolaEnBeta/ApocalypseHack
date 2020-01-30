@@ -13,8 +13,9 @@ body {
   border: 5px solid red;
   border-style: dashed;
   border-radius: 15px;
-  margin: 75px;
-  margin-right: 600px;
+  margin-top: 80px;
+  margin-left: 80px;
+  width: 50%;
   padding: 15px;
 }
 
@@ -23,8 +24,15 @@ h1 {
   text-align: center;
   color: #A62E15;
   text-shadow: 2px 2px 3px white;
+}
 
+.principal-title {
   margin-top: 15px;
+}
+
+.game-title {
+  margin-top: 30px;
+  font-size: 60px;
 }
 
 p, li{
@@ -41,26 +49,104 @@ li {
 }
 
 .start {
-  box-shadow:inset 0px 1px 0px 0px #faafb2;
-  background:linear-gradient(to bottom, #ab1967 5%, #ed0360 100%);
-  background-color:#ab1967;
-  border-radius:6px;
-  border:1px solid #ed1f30;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:15px;
-  font-weight:bold;
-  padding:6px 24px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #c70021;
+  box-shadow: inset 0px 1px 0px 0px #faafb2;
+  background: linear-gradient(to bottom, #ab1967 5%, #ed0360 100%);
+  background-color: #ab1967;
+  border-radius: 6px;
+  border: 1px solid #ed1f30;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: 42%;
+  margin-bottom: 25px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #c70021;
 }
 .start:hover {
-  background:linear-gradient(to bottom, #ed0360 5%, #ab1967 100%);
-  background-color:#ed0360;
+  background: linear-gradient(to bottom, #ed0360 5%, #ab1967 100%);
+  background-color: #ed0360;
 }
 .start:active {
-  position:relative;
-  top:1px;
+  position: relative;
+  top: 1px;
+}
+
+.canvas-container {
+  margin-left: 55px;
+}
+
+.game-container {
+  margin-top: 15px;
+  margin-left: 25px;
+
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: flex-start;
+}
+
+.game-score, .damage, .life, .level {
+  padding: 35px;
+  padding-bottom: 45px;
+  font-size: 35px;
+  margin-bottom: -20px;
+}
+
+.damage .value {
+  color: red;
+}
+
+.over-main {
+  border: 5px solid red;
+  border-style: dashed;
+  border-radius: 15px;
+  margin-top: 80px;
+  margin-left: 80px;
+  width: 50%;
+  padding: 15px;
+}
+
+.over-title {
+  font-size: 103px;
+  margin-top: 80px;
+}
+
+.score {
+  font-size: 50px;
+  margin-left: 100px;
+
+}
+
+.restart {
+  box-shadow: inset 0px 1px 0px 0px #faafb2;
+  background: linear-gradient(to bottom, #ab1967 5%, #ed0360 100%);
+  background-color: #ab1967;
+  border-radius: 6px;
+  border: 1px solid #ed1f30;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 85px;
+  margin-bottom: 25px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #c70021;
+}
+.restart:hover {
+  background: linear-gradient(to bottom, #ed0360 5%, #ab1967 100%);
+  background-color: #ed0360;
+}
+.restart:active {
+  position: relative;
+  top: 1px;
 }
