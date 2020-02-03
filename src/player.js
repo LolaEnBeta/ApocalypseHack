@@ -1,20 +1,22 @@
 "use strict";
 
-function Player(canvas) {
-  this.canvas = canvas;
-  this.ctx = this.canvas.getContext("2d");
+class Player {
+  constructor (canvas) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
 
-  this.height = 85;
-  this.width = 60
+    this.height = 85;
+    this.width = 60
 
-  this.size = 75;
-  this.x = 200 - (this.size / 2);
-  this.y = this.canvas.height - this.size - 20;
+    this.size = 75;
+    this.x = 200 - (this.size / 2);
+    this.y = this.canvas.height - this.size - 20;
 
-  this.score = 0;
-  this.damage = 0;
-  this.life = 5;
-  this.level = 1;
+    this.score = 0;
+    this.damage = 0;
+    this.life = 5;
+    this.level = 1;
+  }
 }
 
 Player.prototype.move = function(direction) {
