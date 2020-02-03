@@ -12,25 +12,25 @@ class Zombie {
     this.speed = 1;
     this.damage = 10;
   }
-}
 
-Zombie.prototype.draw = function() {
-  this.ctx.fillStyle = "green";
-  var img = new Image();
-  img.src = "./images/zombie.png";
-  this.ctx.drawImage(
-    img,
-    this.x,
-    this.y,
-    this.size,
-    this.size,
-  );
-}
+  draw() {
+    this.ctx.fillStyle = "green";
+    const img = new Image();
+    img.src = "./images/zombie.png";
+    this.ctx.drawImage(
+      img,
+      this.x,
+      this.y,
+      this.size,
+      this.size,
+    );
+  }
 
-Zombie.prototype.updatePosition = function() {
-  this.y = this.y + this.speed;
-}
+  updatePosition() {
+    this.y = this.y + this.speed;
+  }
 
-Zombie.prototype.isInsideScreen = function() {
-  return this.y + this.size + this.speed;
+  isInsideScreen() {
+    return this.y + this.size + this.speed;
+  }
 }
