@@ -14,25 +14,25 @@ class Gun {
     this.speed = 1;
     this.shots = 5;
   }
-}
 
-Gun.prototype.draw = function() {
-  this.ctx.fillStyle = "purple";
-  var img = new Image();
-  img.src = "./images/gun.png";
-  this.ctx.drawImage(
-    img,
-    this.x,
-    this.y,
-    this.width,
-    this.height,
-  );
-}
+  draw() {
+    this.ctx.fillStyle = "purple";
+    const img = new Image();
+    img.src = "./images/gun.png";
+    this.ctx.drawImage(
+      img,
+      this.x,
+      this.y,
+      this.width,
+      this.height,
+    );
+  }
 
-Gun.prototype.updatePosition = function() {
-  this.y = this.y + this.speed;
-}
+  updatePosition() {
+    this.y = this.y + this.speed;
+  }
 
-Gun.prototype.isInsideScreen = function() {
-  return this.y + this.size + this.speed;
+  isInsideScreen() {
+    return this.y + this.size + this.speed;
+  }
 }
