@@ -11,22 +11,22 @@ class Bullet {
 
     this.speed = 50;
   }
-}
 
-Bullet.prototype.draw = function() {
-  this.ctx.fillStyle = "red";
-  this.ctx.fillRect(
-    this.x,
-    this.y,
-    this.size,
-    this.size,
-  );
-}
+  draw() {
+    this.ctx.fillStyle = "red";
+    this.ctx.fillRect(
+      this.x,
+      this.y,
+      this.size,
+      this.size,
+    );
+  }
 
-Bullet.prototype.updatePosition = function() {
-  this.y = this.y - this.speed;
-}
+  updatePosition() {
+    this.y = this.y - this.speed;
+  }
 
-Bullet.prototype.isInsideScreen = function() {
-  return this.y + this.size + this.speed;
+  isInsideScreen() {
+    return this.y + this.size + this.speed;
+  }
 }
