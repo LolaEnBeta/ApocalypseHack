@@ -1,20 +1,20 @@
 "use strict";
 
-function buildDom(htmlStr) {
-  var div = document.createElement("div");
+const buildDom = (htmlStr) => {
+  const div = document.createElement("div");
   div.innerHTML = htmlStr;
   return div.children[0];
 }
 
-function main() {
-  var game;
-  var splashScreen;
-  var gameScreen;
-  var gameOverScreen;
+const main = () => {
+  let game;
+  let splashScreen;
+  let gameScreen;
+  let gameOverScreen;
 
-  function createSplashScreen() {
-    var story = "Zombies! Yes, you are right! So prepare yourself. You need to arrive to this safety place everyone is talking about. And, why not? Try to make the world much better killing some zombies. Good luck!";
-    var commands ="Use the left [<-] and right [->] arrows of your keyboard to move you.";
+  const createSplashScreen = () => {
+    const story = "Zombies! Yes, you are right! So prepare yourself. You need to arrive to this safety place everyone is talking about. And, why not? Try to make the world much better killing some zombies. Good luck!";
+    const commands ="Use the left [<-] and right [->] arrows of your keyboard to move you.";
 
     splashScreen = buildDom(
       `<main >
@@ -38,15 +38,15 @@ function main() {
 
     document.body.appendChild(splashScreen);
 
-    var startButton = document.querySelector("button");
+    const startButton = document.querySelector("button");
     startButton.addEventListener("click", startGame);
   }
 
-  function removeSplashScreen() {
+  const removeSplashScreen = () => {
     splashScreen.remove();
   }
 
-  function createGameScreen() {
+  const createGameScreen = () => {
     gameScreen = buildDom(`
       <main >
         <div class="game-container">
@@ -74,11 +74,11 @@ function main() {
     return gameScreen;
   }
 
-  function removeGameScreen() {
+  const removeGameScreen = () => {
     gameScreen.remove();
   }
 
-  function createGameOverScreen() {
+  const createGameOverScreen = () => {
     gameOverScreen = buildDom(`
       <main class="over-main">
         <h1 class="over-title">You are DEAD!</h1>
@@ -91,17 +91,17 @@ function main() {
 
     document.body.appendChild(gameOverScreen);
 
-    var restartButton = gameOverScreen.querySelector("button");
+    const restartButton = gameOverScreen.querySelector("button");
     restartButton.addEventListener("click", startGame);
   }
 
-  function removeGameOverScreen() {
+  const removeGameOverScreen = () => {
     if (gameOverScreen !== undefined) {
       gameOverScreen.remove();
     }
   }
 
-  function startGame() {
+  const startGame = () => {
     removeSplashScreen();
     removeGameOverScreen();
 
@@ -110,17 +110,14 @@ function main() {
     game.gameScreen = createGameScreen();
 
     game.start(() => gameOver());
-
   }
 
-  function gameOver() {
+  const gameOver = () => {
     removeGameScreen();
     createGameOverScreen();
   }
 
-
   createSplashScreen()
 }
-
 
 window.addEventListener("load", main);
