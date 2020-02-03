@@ -12,25 +12,25 @@ class Person {
     this.speed = 1;
     this.life = 1;
   }
-}
 
-Person.prototype.draw = function() {
-  this.ctx.fillStyle = "pink";
-  var img = new Image();
-  img.src = "./images/person.png"
-  this.ctx.drawImage(
-    img,
-    this.x,
-    this.y,
-    this.size,
-    this.size,
-  );
-}
+  draw() {
+    this.ctx.fillStyle = "pink";
+    const img = new Image();
+    img.src = "./images/person.png"
+    this.ctx.drawImage(
+      img,
+      this.x,
+      this.y,
+      this.size,
+      this.size,
+    );
+  }
 
-Person.prototype.updatePosition = function() {
-  this.y = this.y + this.speed;
-}
+  updatePosition() {
+    this.y = this.y + this.speed;
+  }
 
-Person.prototype.isInsideScreen = function() {
-  return this.y + this.size + this.speed;
+  isInsideScreen() {
+    return this.y + this.size + this.speed;
+  }
 }
