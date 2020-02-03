@@ -1,16 +1,18 @@
 "use strict";
 
-function Obstacle(canvas, x) {
-  this.canvas = canvas;
-  this.ctx = this.canvas.getContext("2d");
+class Obstacle {
+  constructor (canvas, x) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
 
-  this.size = 65;
-  this.x = x;
-  this.y = 0;
+    this.size = 65;
+    this.x = x;
+    this.y = 0;
 
-  this.speed = 1;
-  this.damage = 20;
-  this.lifeToRemove = 1;
+    this.speed = 1;
+    this.damage = 20;
+    this.lifeToRemove = 1;
+  }
 }
 
 Obstacle.prototype.draw = function() {
