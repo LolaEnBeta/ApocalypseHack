@@ -1,17 +1,19 @@
 "use strict";
 
-function Gun(canvas, x) {
-  this.canvas = canvas;
-  this.ctx = this.canvas.getContext("2d");
+class Gun {
+  constructor (canvas, x) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
 
-  this.size = 45;
-  this.width = 60;
-  this.height = 45;
-  this.x = x;
-  this.y = 0;
+    this.size = 45;
+    this.width = 60;
+    this.height = 45;
+    this.x = x;
+    this.y = 0;
 
-  this.speed = 1;
-  this.shots = 5;
+    this.speed = 1;
+    this.shots = 5;
+  }
 }
 
 Gun.prototype.draw = function() {
