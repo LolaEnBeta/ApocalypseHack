@@ -1,18 +1,20 @@
 "use strict";
 
-function Game() {
-  this.canvas = null;
-  this.ctx = null;
-  this.player = null;
-  this.zombies = [];
-  this.repairKits = [];
-  this.obstacles = [];
-  this.persons = [];
-  this.gameScreen = null;
-  this.gameIsOver = false;
-  this.score = 0;
-  this.zombieSound = new Audio("./sounds/Zombie.wav");
-  this.crashSound = new Audio("./sounds/car_crash.mp3");
+class Game {
+  constructor () {
+    this.canvas = null;
+    this.ctx = null;
+    this.player = null;
+    this.zombies = [];
+    this.repairKits = [];
+    this.obstacles = [];
+    this.persons = [];
+    this.gameScreen = null;
+    this.gameIsOver = false;
+    this.score = 0;
+    this.zombieSound = new Audio("./sounds/Zombie.wav");
+    this.crashSound = new Audio("./sounds/car_crash.mp3");
+  }
 }
 
 Game.prototype.start = function(gameOverCallback) {
